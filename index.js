@@ -33,8 +33,10 @@ client.on("messageCreate", async function (message) {
               {role: "system", content: "You are a helpful assistant who responds succinctly"},
               {role: "user", content: message.content}
           ],
-          // temperature between 0 and 2, lower = more deterministic
-          temperature: 1.5,
+          // temperature between 0 and 1, lower = more deterministic
+          temperature: 0.8,
+          // max tokens to generate in chat completion (input + generated)
+          max_tokens: 60,
         });
   
       const content = response.data.choices[0].message;
