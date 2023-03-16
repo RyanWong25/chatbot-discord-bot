@@ -47,5 +47,20 @@ client.on("messageCreate", async function (message) {
     }
   });
 
+// listen for ready event: triggered when bot is connected to Discord server
+client.on("ready", async () => {
+    console.log(`Logged in as ${client.user.tag}`);
+  
+    // get the channel object for the channel you want to send the message to
+    const channel = client.channels.cache.get(process.env.CHANNEL_ID);
+  
+    // send a message in the channel to confirm that the bot is up and running
+    try {
+      await channel.send("Chatbot is up and running!");
+    } catch (err) {
+      console.error(err);
+    }
+  });
+
 // Establish connection to Discord server and authenticate bot with token
 client.login(process.env.BOT_TOKEN);
