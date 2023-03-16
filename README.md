@@ -12,3 +12,7 @@ To get this discord bot up and running, use this command:
 ```sh
 node index.js
 ```
+or
+```sh
+node .
+```
