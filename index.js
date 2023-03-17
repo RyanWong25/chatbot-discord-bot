@@ -22,8 +22,8 @@ const openai = new OpenAIApi(new Configuration({
 
 // listen for messageCreate event: triggered when user sends message
 client.on("messageCreate", async function (message) {
-    // check if message sent by bot -> do nothing
-    if (message.author.bot) return;
+    // check if message sent by bot or not from specific channel -> do nothing
+    if (message.author.bot || message.channel.id !== process.env.CHANNEL_ID) return;
     
     // Create completion for user message, sends back as a response
     try {
